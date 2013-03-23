@@ -24,11 +24,12 @@ var mini_server = {
 
     //set routes
     app.get('/', web_app.index);
-    // console.log('routes?>', routes);
+
+    app.get('/callback.html' , web_app.callback);
 
     //start server
     app.listen(port, function(){
-      console.log("Express server listening on port " + port);
+      console.log("soundGround server listening on port " + port);
     });
 
   },
