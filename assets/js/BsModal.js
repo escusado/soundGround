@@ -1,5 +1,5 @@
 Class('BsModal').includes(CustomEventSupport)({
-  _HTML : '<div class="modal hide fade">\
+  _HTML : '<div class="client-id modal hide fade">\
             <div class="modal-header">\
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
               <h3></h3>\
@@ -26,7 +26,10 @@ Class('BsModal').includes(CustomEventSupport)({
         defaults = {
           content : {
             header : 'Modal Header',
-            body   : '<p>One fine body…</p>',
+            body   : '<form>\
+                        <label>sondCloud Client ID</label>\
+                          <input class="client-id" type="text" placeholder="72c6ae4ae439d253d88a81db48ee9e20">\
+                      </form>',
             button : 'Ok'
           }
         };
@@ -61,6 +64,22 @@ Class('BsModal').includes(CustomEventSupport)({
       show : function(){
         this.element.appendTo( $('body') );
         this.element.modal('show');
+      },
+
+      getClientId : function(){
+        var value = this.body.find('input.client-id').val();
+        this.destroy();
+        return value;
+      },
+
+      destroy : function(){
+        var BsModal = this;
+        
+        this.element.on('hidden', function(){
+          BsModal.element.remove();
+        });
+
+        this.element.modal('hide');
       }
     }
   });

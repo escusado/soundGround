@@ -1,17 +1,26 @@
 SGC = Class('SoundGroundClient')({
   _v : 'a',
   setup : function (ev) {
+    //get client ID
+    this.clientIdModal = new BsModal();
+    this.clientIdModal.show();
+
+    this.bindEvents();
+  },
+
+  bindEvents : function(){
+    var SoundGroundClient = this;
+
+    this.clientIdModal.bind('button:click', function(e, data){
+      SoundGroundClient.tryToLogin( SoundGroundClient.clientIdModal.getClientId() );
+    });
+  },
+
+  tryToLogin : function(clientId){
     var disaplyedUrl = window.location.href.split("/"),
         url          = disaplyedUrl[0] + "//" + disaplyedUrl[2];
 
-    this.client_id_modal = new BsModal();
-    this.client_id_modal.show();
-
-    console.log('>', url +"/callback.html");
-
-    this.client_id_modal.bind('button:click', function(){
-      console.log('asdfasdfasdf');
-    });
+    console.log('>', clientId);
 
     // SC.initialize({
     //   client_id: "72c6ae4ae439d253d88a81db48ee9e20",
@@ -23,7 +32,6 @@ SGC = Class('SoundGroundClient')({
     //     alert('Hello, ' + me.username);
     //   });
 
-    // });
-
+    // }); 
   }
 });
