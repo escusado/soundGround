@@ -2,8 +2,9 @@ SGC = Class('SoundGroundClient')({
   _c : '72c6ae4ae439d253d88a81db48ee9e20',
   setup : function (ev) {
     //get client ID
-    this.clientIdModal = new BsModal();
-    // this.clientIdModal.show();
+    this.clientIdModal = new SgClientIdModal();
+    //this.clientIdModal.show();
+    this.handleSCdata(dummy);
 
     this.bindEvents();
   },
@@ -17,7 +18,8 @@ SGC = Class('SoundGroundClient')({
   },
 
   tryToLogin : function(clientId){
-    var disaplyedUrl = window.location.href.split("/"),
+    var SGC = this,
+        disaplyedUrl = window.location.href.split("/"),
         url          = disaplyedUrl[0] + "//" + disaplyedUrl[2];
 
     SC.initialize({
@@ -26,10 +28,18 @@ SGC = Class('SoundGroundClient')({
     });
 
     SC.connect(function() {
-      SC.get('/me', function(me) {
-        alert('Hello, ' + me.username);
+      console.log('> Logged in fetching favorites...');
+
+      SC.get('/me/favorites', function(data) {
+        // JSON.stringify(data)
+        SGC.handleSCdata(data);
       });
+
     });
 
+  },
+
+  handleSCdata : function(data){
+    SgTrackList.setup(data);
   }
 });
