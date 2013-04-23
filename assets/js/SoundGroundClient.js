@@ -3,7 +3,7 @@ SGC = Class('SoundGroundClient')({
   setup : function (ev) {
     //get client ID
     this.clientIdModal = new SgClientIdModal();
-    //this.clientIdModal.show();
+    this.clientIdModal.show();
     this.handleSCdata(dummy);
 
     this.bindEvents();
