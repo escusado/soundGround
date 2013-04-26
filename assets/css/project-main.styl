@@ -3,20 +3,22 @@ bezel(top right bottom left)
   $shadows = ()
   for $current_color, i in $colors
     if $current_color > 0
-      $shade = '255,255,255,'+$current_color
+      $shade = '255,255,255'
     else
-      $shade = '0,0,0,'+$current_color
+      $shade = '0,0,0'
+      $current_color = $current_color*-1
     if i == 0
       $direction = '0 1px'
     else if i == 1
-      $direction = '1px 0'
-    else if i == 2
       $direction = '-1px 0'
-    else if i == 3
+    else if i == 2
       $direction = '0 -1px'
-    push($shadows,'(inset '+$direction+' 0 0 rgba('+$shade+','+$current_color+')')
-    $string = join(',',$shadows) 
+    else if i == 3
+      $direction = '1px 0'
+    push($shadows,'inset '+$direction+' 0 0 rgba('+$shade+','+$current_color+')')
+  $string = join(',',$shadows)
   @box-shadow(unquote($string))
+
 
 
 ul, li
@@ -76,7 +78,7 @@ input
           height : 50px;
 
         .cover-art-bezel
-          bezel(0.30, 0.30, 0, 0.20);
+          bezel(0.30, 0.10, -0.50, 0);
           position : absolute;
           top : 0;
           left : 0;
@@ -89,9 +91,7 @@ input
           background-size : cover;
 
   .info-wrapper
-    
-    bezel(0.30, 0.30, 0, 0.20);
-    
+    bezel(0.30, 0.10, -0.50, 0);
     background : #363636 url('/img/always_grey.png') 0 0 repeat;
     color : #dedede;
     text-shadow : 0 -1px rgba(0,0,0,.8);
