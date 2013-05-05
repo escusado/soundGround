@@ -21,14 +21,16 @@ bezel(top right bottom left)
 
 
 
-ul, li
+ul, li,
+ul li
   padding : 0;
   margin : 0;
+  list-style : none;
 
 body
   padding-top : 60px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
-
+  line-height: 20px;
 input
   font-family: 'Yanone Kaffeesatz', sans-serif;
 
@@ -66,7 +68,9 @@ input
 
     .track
       height : 50px;
-      padding : 10px
+      box-shadow : 0 0 3px #000;
+      position : relative;
+      // padding : 10px
 
       .cover-art-wrapper
         position : relative;
@@ -78,7 +82,7 @@ input
           height : 50px;
 
         .cover-art-bezel
-          bezel(0.30, 0.10, -0.50, 0);
+          bezel(0.50, 0.30, -0.30, 0.30);
           position : absolute;
           top : 0;
           left : 0;
@@ -91,18 +95,51 @@ input
           background-size : cover;
 
   .info-wrapper
-    bezel(0.30, 0.10, -0.50, 0);
+    bezel(0.10, 0.05, -0.30, -0.50);
     background : #363636 url('/img/always_grey.png') 0 0 repeat;
     color : #dedede;
     text-shadow : 0 -1px rgba(0,0,0,.8);
-      
+
     >div
       margin-left : 5px;
 
     .track-artist
       margin-top : 5px;
       font-size : 20px;
-      font-weight : bold;
+      font-weight : 700;
 
     .track-name
       font-size : 18px;
+
+  .track-editor
+    background : #5198e8 url('/img/blueprint.png') 0 0 repeat;
+
+    .form-body
+      padding : 10px;
+      height : 300px;
+
+      .field-name
+        font-size : 18px;
+        font-weight : 700;
+        color : rgba(0,0,0,.5)
+        text-shadow : 0 1px rgba(255,255,255,.2);
+
+      .field-value
+        font-family : Verdana, sans-serif;
+        font-size: 15px;
+        color : #FFFFFF;
+        border : none;
+        padding : 2px 4px 2px 4px;
+        text-shadow : 0 -1px rgba(0,0,0,.5);
+        margin-top : 1px;
+        border-radius : 2px;
+        background-color : transparent;
+        transition: background-color 300ms;
+        transition: box-shadow 300ms;
+
+        &:focus
+          background-color: rgba(0,0,0,.1);
+          bezel(-0.3, -0.2, 0.5, -0.2);
+
+    .form-footer
+      height : 50px;
