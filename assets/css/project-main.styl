@@ -1,3 +1,4 @@
+// Bezel
 bezel(top right bottom left)
   $colors = top right bottom left
   $shadows = ()
@@ -19,20 +20,79 @@ bezel(top right bottom left)
   $string = join(',',$shadows)
   @box-shadow(unquote($string))
 
+//Clearfix
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+ 
+.clearfix {
+  display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+  display: block;
+}
+ 
+* html .clearfix {
+  height: 1%;
+}
 
-
+//List reset
 ul, li,
 ul li
   padding : 0;
   margin : 0;
   list-style : none;
 
+//Fonts
 body
   padding-top : 60px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   line-height: 20px;
 input
   font-family: 'Yanone Kaffeesatz', sans-serif;
+
+//Button
+.button
+  padding : 1px 6px 3px 6px;
+  display: inline-block;
+  border-radius: 3px;
+  text-shadow : 0 1px rgba(255,255,255,.5);
+  box-shadow : 0 1px 0 0 rgba(255, 255, 255, 0.5) inset, -1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 -2px 0 0 rgba(0, 0, 0, 0.3) inset, 1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(0, 0, 0, 0.5)
+  user-select: none;
+  cursor : pointer;
+  position : relative;
+  overflow: hidden;
+  color : rgba(0,0,0,.8);
+
+  span
+    font-size: 18px;
+    font-weight: 700;
+
+  &:hover
+    .shade
+      background-color: rgba(255,255,255,.2);
+      position : absolute;
+      top : -2px;
+      left : 0;
+      width : 100%
+      height : 100%
+      border-radius : 2px;
+
+  &:active
+    box-shadow : 0 1px 0 0 rgba(255, 255, 255, 0.5) inset, -1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.3) inset, 1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(0, 0, 0, 0.5)
+    padding : 1px 6px 2px 6px;
+    margin-top: 1px;
+    
+    .shade
+      background-color: rgba(255,255,255,.5);
+
+//App
 
 .modal.client-id
   form
@@ -142,4 +202,25 @@ input
           bezel(-0.3, -0.2, 0.5, -0.2);
 
     .form-footer
-      height : 50px;
+      padding : 10px;
+
+      .reset
+        opacity: .2;
+        background-color: #FF8888;
+        float: left;
+
+        .icon
+          vertical-align : top;
+          margin-top: 4px;
+
+        &:hover
+          transition : opacity 500ms;
+          opacity : 1;
+
+      .save
+        background-color: #BADE86;
+        float: right;
+
+        .icon
+          vertical-align : top;
+          margin-top: 4px;      

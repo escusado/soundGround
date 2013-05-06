@@ -52,6 +52,7 @@ var mini_server = {
 
     // app.use(express.static(path.join(__dirname, 'public'))); //example
     app.use('/img', express.static(__dirname + '/assets/img'));
+    app.use('/fonts', express.static(__dirname + '/assets/fonts'));
 
     app.use(app.router);
     app.use(connect_assets());
