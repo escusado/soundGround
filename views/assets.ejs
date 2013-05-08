@@ -25,15 +25,23 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
 <script src="//connect.soundcloud.com/sdk.js"></script>
 <?- js('lib/jquery') ?>
-<?- js('lib/underscore') ?>
-<!-- <?- js('lib/bootstrap') ?> -->
-<?- js('lib/neon') ?>
+<?- js('lib/azendal/neon') ?>
+<?- js('lib/azendal/CustomEvent') ?>
+<?- js('lib/azendal/CustomEventSupport') ?>
+<?- js('lib/azendal/BubblingSupport') ?>
+<?- js('lib/azendal/NodeSupport') ?>
 <?- js('lib/elastic') ?>
+<?- js('lib/azendal/widget') ?>
+
 
 <!-- project -->
-<?- js('SoundGroundClient') ?>
-<?- js('SgClientIdModal') ?>
-<?- js('SgTrack') ?>
-<?- js('SgTrackList') ?>
-<?- js('dummy') ?>
-<?- js('project') ?>
+<?-js('dummy') ?>
+<!-- < ?-js('SoundGroundClient') ?>
+< ?-js('SgClientIdModal') ?>
+< ?-js('SgTrack') ?>
+< ?-js('SgTrackList') ?>
+< ?-js('project') ?> -->
+
+
+<?-js('soundGround/Controller') ?>
+<?-js('soundGround/App') ?>
