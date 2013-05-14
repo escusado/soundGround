@@ -12,6 +12,7 @@ Class('TrackMain').inherits(Widget)({
             this.trackInfo = new TrackInfo( this.trackData );
 
             this.trackInfo.render(this.element);
+
         }
 
     }

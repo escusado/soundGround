@@ -16,12 +16,12 @@ Class('TrackInfo').inherits(Widget)({
 
     prototype : {
 
-        init : function(config) {
-            Widget.prototype.init.call(this, { config : config });
+        init : function(trackData) {
+            Widget.prototype.init.call(this, { trackData : trackData });
 
             this.coverArt      = this.element.find('.cover-art');
-            this.trackName     = this.element.find('.track-name');
             this.trackArtist   = this.element.find('.track-artist');
+            this.trackName     = this.element.find('.track-name');
             this.trackControls = this.element.find('.track-controls');
 
             this.queueButton = new TrackHeaderButton({
@@ -34,8 +34,24 @@ Class('TrackInfo').inherits(Widget)({
                 icon  : 'icon-pencil'
             });
 
-            this.queueButton.render(this.trackControls);
-            this.unfoldButton.render(this.trackControls);
+            // render info
+            this.setData({
+                trackName     : this.trackData.user.username,
+                trackArtist   : this.trackData.title,
+                trackCoverArt : this.trackData.artwork_url
+            });
+
+            // render controls
+            this.queueButton.render( this.trackControls );
+            this.unfoldButton.render( this.trackControls );
+        },
+
+        setData : function( data ){
+            this.trackName.html( data.trackName );
+            this.trackArtist.html( data.trackArtist );
+            this.coverArt.css({
+                backgroundImage : 'url('+data.trackCoverArt+')'
+            });
         }
 
     }
