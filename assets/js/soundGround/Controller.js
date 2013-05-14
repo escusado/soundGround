@@ -9,8 +9,6 @@ Class('Controller').inherits(Widget)({
         init : function(config) {
             Widget.prototype.init.call(this, { config : config });
 
-            
-            
         }
 
     }
