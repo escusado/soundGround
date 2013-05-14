@@ -1,10 +1,9 @@
 window.soundGround = {
     start : function(){
-        
         //get ID
 
         var app = new Controller({
-            data : window.dummy
+            trackData : window.dummy
         });
 
         app.render($('.wrapper'));
