@@ -106,7 +106,7 @@ input
     color       : #333333;
 
 .app-wrapper
-  width : 300px;
+  width : 400px;
   margin : auto;
   background-color #333;
 
@@ -127,19 +127,19 @@ input
   .track-list
 
     .track
-      height : 50px;
+      height : 55px;
       box-shadow : 0 0 3px #000;
       position : relative;
       // padding : 10px
 
       .cover-art-wrapper
         position : relative;
-        width : 50px;
-        height : 50px;
+        width : 55px;
+        height : 55px;
 
         >div
-          width : 50px;
-          height : 50px;
+          width : 55px;
+          height : 55px;
 
         .cover-art-bezel
           bezel(0.50, 0.30, -0.30, 0.30);
@@ -157,18 +157,32 @@ input
   .info-wrapper
     bezel(0.10, -0.05, -0.30, -0.50);
     background : #363636 url('/img/always_grey.png') 0 0 repeat;
-    color : #dedede;
     text-shadow : 0 -1px rgba(0,0,0,.8);
 
-    >div
-      margin-left : 5px;
+    >input
+      color : #dedede;
+      background-color: transparent;
+      border: none;
+      height: 20px;
+      font-size : 20px;
+      margin : 5px;
+      outline : none;
+      border : none;
+      border-radius 2px;
+      box-shadow : none;
+      transition : background-color 500ms, color 500ms, box-shadow 500ms;
+
+      &:focus
+        color : #333;
+        background-color: #FFF;
+        border : 1px #333;
+        box-shadow : 0 0 0 1px #000;
 
     .track-artist
-      margin-top : 5px;
-      font-size : 20px;
       font-weight : 700;
 
     .track-name
+      margin-top: 0;
       font-size : 18px;
 
   .track-controls

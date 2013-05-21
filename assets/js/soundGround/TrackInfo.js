@@ -8,8 +8,8 @@ Class('TrackInfo').inherits(Widget)({
                 <div class="cover-art-bezel"></div>\
               </div>\
               <div class="elastic column info-wrapper">\
-                <div class="track-artist">Artist Name</div>\
-                <div class="track-name">Track Name</div>\
+                <input type="text" class="full-width track-artist">\
+                <input type="text" class="full-width track-name">\
               </div>\
               <div class="fixed column track-controls"></div>\
     </div>',
@@ -47,8 +47,8 @@ Class('TrackInfo').inherits(Widget)({
         },
 
         setData : function( data ){
-            this.trackName.html( data.trackName );
-            this.trackArtist.html( data.trackArtist );
+            this.trackArtist.val( data.trackArtist );
+            this.trackName.val( data.trackName );
             this.coverArt.css({
                 backgroundImage : 'url('+data.trackCoverArt+')'
             });

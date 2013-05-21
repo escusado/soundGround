@@ -6,11 +6,16 @@ Class('Tracklist').inherits(Widget)({
 
     prototype : {
 
-        init : function(trackList) {
-            Widget.prototype.init.call(this, { trackList : trackList });
+        init : function(tracksData) {
+            var trackList = this;
 
-            this.track = new TrackMain(this.trackList[0]);
-            this.track.render(this.element);
+            Widget.prototype.init.call(this, { tracksData : tracksData });
+
+            this.tracks = [];
+
+            this.tracksData.forEach(function(trackData){
+                trackList.tracks.push( new TrackMain(trackData).render(trackList.element) );
+            });
         }
 
     }
